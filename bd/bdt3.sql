@@ -134,6 +134,8 @@ CREATE TABLE usuario (
 	activo BOOL NULL,
 	CONSTRAINT users_pk PRIMARY KEY (idusuario)
 );
+select *from usuario;
+insert into usuario values(null,"fredo","fredo@gmail.com","123456","Alfredo","Castillo",true);
 
 
 CREATE TABLE rol (
