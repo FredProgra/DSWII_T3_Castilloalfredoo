@@ -6,10 +6,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Exception.ResourceNotFoundException;
 import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Model.bd.Publicacion;
+import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Model.dto.DtoEntity;
+import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Model.dto.PublicacionDto;
 import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Service.IPublicacionService;
+import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.util.DtoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @RestController
@@ -17,8 +21,12 @@ import java.util.List;
 public class PublicacionController {
     private IPublicacionService publicacionService;
     @GetMapping("")
-    public ResponseEntity<List<Publicacion>> publicacionListResponse(){
-        List<Publicacion> publicacionList=new ArrayList<>(publicacionService.lisPublicacions());
+    public ResponseEntity<List<DtoEntity>> publicacionListResponse(){
+        List<DtoEntity> publicacionList=new ArrayList<>();
+        publicacionList=publicacionService.lisPublicacions()
+                .stream()
+                .map(x->new DtoUtil().convertirADto(x,new PublicacionDto()))
+                .collect(Collectors.toList());
         if (publicacionList.isEmpty()){new ResponseEntity<>(HttpStatus.NO_CONTENT);}
         return  new ResponseEntity<>(publicacionList,HttpStatus.OK);
     }
