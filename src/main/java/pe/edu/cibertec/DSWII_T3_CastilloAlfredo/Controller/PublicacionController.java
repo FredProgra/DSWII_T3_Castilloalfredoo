@@ -3,6 +3,7 @@ package pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Controller;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Exception.ResourceNotFoundException;
 import pe.edu.cibertec.DSWII_T3_CastilloAlfredo.Model.bd.Publicacion;
@@ -20,7 +21,9 @@ import java.util.stream.Collectors;
 @RequestMapping(path = "api/v1/publicacion")
 public class PublicacionController {
     private IPublicacionService publicacionService;
+
     @GetMapping("")
+    @PreAuthorize("hasRole('Coordinador')")
     public ResponseEntity<List<DtoEntity>> publicacionListResponse(){
         List<DtoEntity> publicacionList=new ArrayList<>();
         publicacionList=publicacionService.lisPublicacions()

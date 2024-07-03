@@ -10,6 +10,5 @@ public class PublicacionDto implements DtoEntity{
     private String resumen;
     private String fechpublicacion;
 
-    private Autor nomautor;
-    private Autor apeautor;
+    private AutorDto autor;
 }

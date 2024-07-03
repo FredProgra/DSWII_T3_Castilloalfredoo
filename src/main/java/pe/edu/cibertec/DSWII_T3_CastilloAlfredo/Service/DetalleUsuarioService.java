@@ -20,6 +20,7 @@ import java.util.Set;
 @Service
 public class DetalleUsuarioService implements UserDetailsService {
     private UsuarioRepository usuarioRepository;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Usuario usuario =obtenerUsuarioXNomusuario(username);

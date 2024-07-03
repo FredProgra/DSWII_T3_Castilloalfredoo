@@ -135,7 +135,9 @@ CREATE TABLE usuario (
 	CONSTRAINT users_pk PRIMARY KEY (idusuario)
 );
 select *from usuario;
+select *from rol;
 insert into usuario values(null,"fredo","fredo@gmail.com","123456","Alfredo","Castillo",true);
+insert into usuario values(null,"key","key@gmail.com","123456","Alfredo","Castillo",true);
 
 
 CREATE TABLE rol (
@@ -155,3 +157,4 @@ CREATE TABLE usuario_rol (
 	CONSTRAINT user_role_FK FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
 	CONSTRAINT user_role_FK_1 FOREIGN KEY (idrol) REFERENCES rol(idrol)
 );
+select *from usuario_rol;
