@@ -45,7 +45,7 @@ public class PublicacionController {
         newpublicacion.setTitulo(publicacion.getTitulo());
         newpublicacion.setResumen(publicacion.getResumen());
         newpublicacion.setFechpublicacion(publicacion.getFechpublicacion());
-        newpublicacion.setIdautor(publicacion.getIdautor());
+        newpublicacion.setAutor(publicacion.getAutor());
 
 
         return new ResponseEntity<>(publicacionService.agregarpublicaciom(newpublicacion),
