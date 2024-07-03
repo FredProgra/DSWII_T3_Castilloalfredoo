@@ -158,3 +158,5 @@ CREATE TABLE usuario_rol (
 	CONSTRAINT user_role_FK_1 FOREIGN KEY (idrol) REFERENCES rol(idrol)
 );
 select *from usuario_rol;
+insert into usuario_rol values(1,1);
+insert into usuario_rol value(3,2)
